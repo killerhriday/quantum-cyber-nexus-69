@@ -31,18 +31,47 @@ const ResearchSection = () => {
                 <Dialog>
                   <DialogTrigger asChild>
                     <div className="cursor-pointer group">
-                      <div className="bg-white rounded-lg shadow-md p-4 transform group-hover:scale-105 transition-transform duration-200">
-                        <div className="aspect-[3/4] bg-gradient-to-b from-background to-muted/30 rounded border flex flex-col items-center justify-center">
-                          <FileText className="h-16 w-16 text-muted-foreground mb-4" />
-                          <div className="text-xs text-center text-muted-foreground font-mono">
-                            CRYPTECH:<br/>
-                            A Novel Quantum-Resistant<br/>
-                            Cryptographic Framework
+                      <div className="bg-white dark:bg-gray-50 rounded-lg shadow-lg p-6 transform group-hover:scale-105 transition-transform duration-200 max-w-[280px]">
+                        <div className="aspect-[3/4] bg-white dark:bg-gray-50 rounded border-2 border-gray-200 p-4 text-black">
+                          {/* Paper Title Area */}
+                          <div className="text-center mb-4">
+                            <div className="text-xs font-bold uppercase tracking-wide mb-2">
+                              Research Paper
+                            </div>
+                            <h3 className="text-sm font-bold leading-tight mb-2">
+                              CrypTech: A Novel Quantum-Resistant Cryptographic Framework
+                            </h3>
+                            <div className="text-xs text-gray-600 mb-4">
+                              Hriday H. Patel<br/>
+                              2024
+                            </div>
+                          </div>
+                          
+                          {/* Abstract Preview */}
+                          <div className="text-xs leading-relaxed">
+                            <div className="font-semibold mb-1">Abstract</div>
+                            <div className="text-gray-700 space-y-1">
+                              <div className="h-1 bg-gray-300 rounded w-full"></div>
+                              <div className="h-1 bg-gray-300 rounded w-5/6"></div>
+                              <div className="h-1 bg-gray-300 rounded w-full"></div>
+                              <div className="h-1 bg-gray-300 rounded w-3/4"></div>
+                              <div className="h-1 bg-gray-300 rounded w-full"></div>
+                              <div className="h-1 bg-gray-300 rounded w-4/5"></div>
+                            </div>
+                            
+                            <div className="mt-3 space-y-2">
+                              <div className="font-semibold text-xs">1. Introduction</div>
+                              <div className="space-y-1">
+                                <div className="h-1 bg-gray-300 rounded w-full"></div>
+                                <div className="h-1 bg-gray-300 rounded w-4/5"></div>
+                                <div className="h-1 bg-gray-300 rounded w-full"></div>
+                              </div>
+                            </div>
                           </div>
                         </div>
                         <div className="mt-3 text-center">
                           <span className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">
-                            Click to Preview
+                            Click to Open
                           </span>
                         </div>
                       </div>
