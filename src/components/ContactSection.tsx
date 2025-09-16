@@ -96,17 +96,13 @@ const ContactSection = () => {
           </div>
 
           {/* Contact Info */}
-          <Card className="p-8 bg-gradient-to-br from-card/80 to-secondary/50 backdrop-blur-sm border-border/50">
-            <h3 className="text-2xl font-bold mb-6">Get In Touch</h3>
+          <Card className="p-6 bg-gradient-to-br from-card/80 to-secondary/50 backdrop-blur-sm border-border/50">
+            <h3 className="text-2xl font-bold mb-4">Get In Touch</h3>
             
-            <div className="space-y-4 mb-8">
+            <div className="space-y-3 mb-6">
               <div className="flex items-center gap-3">
                 <MapPin className="h-5 w-5 text-primary" />
                 <span>Ahmedabad, India</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <Calendar className="h-5 w-5 text-quantum" />
-                <span>Available for collaborations & discussions</span>
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="h-5 w-5 text-cyber" />
