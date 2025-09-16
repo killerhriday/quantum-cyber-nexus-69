@@ -39,7 +39,7 @@ const ResearchSection = () => {
                               Research Paper
                             </div>
                             <h3 className="text-sm font-bold leading-tight mb-2">
-                              CrypTech: A Novel Quantum-Resistant Cryptographic Framework
+                              CrypTech: A Quantum-Resistant Cryptographic Framework for Software Research
                             </h3>
                             <div className="text-xs text-gray-600 mb-4">
                               Hriday H. Patel<br/>
@@ -88,7 +88,7 @@ const ResearchSection = () => {
                     </div>
                     <div className="flex justify-between items-center mt-4">
                       <span className="text-sm text-muted-foreground">
-                        CrypTech: A Novel Quantum-Resistant Cryptographic Framework
+                        CrypTech: A Quantum-Resistant Cryptographic Framework for Software Research
                       </span>
                       <Button
                         variant="outline"
@@ -117,7 +117,7 @@ const ResearchSection = () => {
                         </span>
                       </div>
                       <CardTitle className="text-xl md:text-2xl leading-tight">
-                        CrypTech: A Novel Quantum-Resistant Cryptographic Framework
+                        CrypTech: A Quantum-Resistant Cryptographic Framework for Software Research
                       </CardTitle>
                       <CardDescription className="text-base">
                         By Hriday H. Patel • 2024
@@ -129,17 +129,17 @@ const ResearchSection = () => {
                 <CardContent>
                   <div className="space-y-6">
                     <p className="text-muted-foreground leading-relaxed">
-                      This research introduces CrypTech, an innovative quantum-resistant cryptographic framework 
-                      designed to address the emerging security challenges posed by quantum computing advances. 
-                      The framework integrates novel mathematical foundations with practical implementation strategies 
-                      for next-generation cybersecurity applications.
+                      This research introduces CrypTech, a quantum-resistant cryptographic framework 
+                      designed for software research purposes to address the emerging security challenges posed by quantum computing advances. 
+                      The framework integrates mathematical foundations with practical implementation strategies 
+                      for cybersecurity applications.
                     </p>
 
                     <div className="space-y-4">
                       <div>
                         <h4 className="font-medium mb-2">Key Contributions</h4>
                         <ul className="text-sm text-muted-foreground space-y-1 ml-4">
-                          <li>• Novel quantum-resistant encryption algorithms</li>
+                          <li>• Quantum-resistant encryption algorithms</li>
                           <li>• Practical implementation framework for enterprise security</li>
                           <li>• Performance analysis against classical cryptographic methods</li>
                           <li>• Future-proof security architecture design</li>
@@ -183,7 +183,7 @@ const ResearchSection = () => {
                           </div>
                           <div className="flex justify-between items-center mt-4">
                             <span className="text-sm text-muted-foreground">
-                              CrypTech: A Novel Quantum-Resistant Cryptographic Framework
+                              CrypTech: A Quantum-Resistant Cryptographic Framework for Software Research
                             </span>
                             <Button
                               variant="outline"
