@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Mail, Linkedin, Award, Code2, ExternalLink } from "lucide-react";
 import sophisticatedHero from "@/assets/sophisticated-hero.jpg";
-import profileElegant from "@/assets/profile-elegant.jpg";
+import profileNew from "@/assets/profile-new.jpg";
 
 const HeroSection = () => {
   const scrollToAbout = () => {
@@ -36,7 +36,7 @@ const HeroSection = () => {
             <div className="mb-8 lg:mb-0">
               <div className="w-32 h-32 mx-auto lg:mx-0 mb-6 rounded-full overflow-hidden border-2 border-muted/30">
                 <img 
-                  src={profileElegant} 
+                  src={profileNew} 
                   alt="Hriday H Patel" 
                   className="w-full h-full object-cover"
                 />
@@ -65,7 +65,7 @@ const HeroSection = () => {
                   IBDP-2 student
                 </h2>
                 <h3 className="text-lg md:text-xl font-light text-muted-foreground/80">
-                  intended majors
+                  intended majors in quantum computing and cybersecurity
                 </h3>
                 <div className="flex items-center gap-2">
                   <Code2 className="h-4 w-4 text-muted-foreground" />
