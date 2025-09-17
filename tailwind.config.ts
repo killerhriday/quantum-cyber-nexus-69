@@ -113,6 +113,14 @@ export default {
 					'0%, 100%': { transform: 'translate(0, 0) rotate(0deg)' },
 					'33%': { transform: 'translate(30px, -30px) rotate(120deg)' },
 					'66%': { transform: 'translate(-20px, 20px) rotate(240deg)' }
+				},
+				'scale-in': {
+					'0%': { transform: 'scale(0)', opacity: '0' },
+					'100%': { transform: 'scale(1)', opacity: '1' }
+				},
+				'fade-in': {
+					'0%': { opacity: '0' },
+					'100%': { opacity: '1' }
 				}
 			},
 			animation: {
@@ -124,6 +132,8 @@ export default {
 				'fade-in-up': 'fade-in-up 0.6s ease-out',
 				'quantum-pulse': 'quantum-pulse 3s ease-in-out infinite',
 				'particle-float': 'particle-float 8s ease-in-out infinite',
+				'scale-in': 'scale-in 0.5s ease-out forwards',
+				'fade-in': 'fade-in 0.8s ease-out forwards',
 			},
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
