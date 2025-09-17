@@ -151,7 +151,7 @@ const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
               </h1>
               <div className="flex items-center justify-center gap-2 text-primary/80 text-sm">
                 <div className="w-8 h-px bg-gradient-to-r from-transparent to-primary/50" />
-                <span className="font-mono">QUANTUM.AI.INITIALIZING</span>
+                <span className="font-mono">HRIDAY.H.PATEL</span>
                 <div className="w-8 h-px bg-gradient-to-l from-transparent to-primary/50" />
               </div>
             </div>
@@ -178,7 +178,7 @@ const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
               />
             </div>
             <div className="flex justify-between text-xs text-primary/60 mt-2 font-mono">
-              <span>NEURAL.NET</span>
+              <span>portfolio</span>
               <span>LOADING...</span>
               <span>100%</span>
             </div>
