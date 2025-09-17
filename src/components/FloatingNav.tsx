@@ -59,7 +59,7 @@ const FloatingNav = () => {
   };
 
   return (
-    <div className="fixed right-6 top-1/2 -translate-y-1/2 z-40">
+    <div className="fixed right-6 top-1/2 -translate-y-1/2 z-50">
       {/* Floating Menu Button */}
       <div className="relative">
         <Button
@@ -100,7 +100,7 @@ const FloatingNav = () => {
         <div
           className={`
             absolute right-16 top-1/2 -translate-y-1/2
-            transition-all duration-500 ease-out z-50
+            transition-all duration-500 ease-out
             ${
               isOpen
                 ? "opacity-100 translate-x-0 scale-100"
@@ -108,7 +108,7 @@ const FloatingNav = () => {
             }
           `}
         >
-          <div className="bg-card/95 backdrop-blur-md border border-border/50 rounded-2xl p-2 shadow-xl">
+          <div className="bg-card/90 backdrop-blur-md border border-border/50 rounded-2xl p-2 shadow-xl">
             <div className="space-y-1">
               {navItems.map((item, index) => {
                 const IconComponent = item.icon;
