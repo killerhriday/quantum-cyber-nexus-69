@@ -17,7 +17,7 @@ const ResearchSection = () => {
             </h2>
           </div>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Advancing the frontiers of quantum computing and cybersecurity through rigorous academic research and innovation.
+            Advancing the frontiers cybersecurity through rigorous academic research and innovation.
           </p>
         </div>
 
@@ -43,7 +43,7 @@ const ResearchSection = () => {
                             </h3>
                             <div className="text-xs text-gray-600 mb-4">
                               Hriday H. Patel<br/>
-                              2024
+                              2025
                             </div>
                           </div>
                           
@@ -129,10 +129,12 @@ const ResearchSection = () => {
                 <CardContent>
                   <div className="space-y-6">
                     <p className="text-muted-foreground leading-relaxed">
-                      This research introduces CrypTech, a quantum-resistant cryptographic framework 
-                      designed for software research purposes to address the emerging security challenges posed by quantum computing advances. 
-                      The framework integrates mathematical foundations with practical implementation strategies 
-                      for cybersecurity applications.
+                     This research presents CrypTech, cybersecurity platform developed by me.
+                     this protech large number of devcies from virus and hacker all run by AI made by me
+                     The framework is designed to address the emerging security challenges posed by advances in quantum computing.
+                         My work integrates rigorous mathematical foundations with practical implementation strategies.
+                    CrypTech provides robust, real-world solutions for modern cybersecurity applications.
+
                     </p>
 
                     <div className="space-y-4">
@@ -183,7 +185,7 @@ const ResearchSection = () => {
                           </div>
                           <div className="flex justify-between items-center mt-4">
                             <span className="text-sm text-muted-foreground">
-                              CrypTech: A Quantum-Resistant Cryptographic Framework for Software Research
+                              CrypTech: A Quantum-Resistant Cryptographic Framework for Software devlopment
                             </span>
                             <Button
                               variant="outline"
