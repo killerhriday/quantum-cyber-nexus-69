@@ -8,7 +8,7 @@ const ProjectsSection = () => {
     {
       title: "CRYPTECH",
       subtitle: "AI-Powered Cybersecurity Research Platform",
-      description: "My own software research project developing an AI-powered cybersecurity platform featuring federated learning, digital forensic DNA, adaptive encryption, and real-time encrypted telemetry for autonomous LAN defense. Currently at the prototype stage with a patent application in progress.",
+      description: "CRYPTECH is my project developing an AI-powered cybersecurity platform for autonomous network defense. It leverages federated learning for collaborative threat detection, digital forensic DNA to uniquely trace attack patterns, adaptive encryption for dynamic security, and real-time encrypted telemetry for continuous LAN monitoring. The system is designed to automatically detect and respond to threats, minimizing the need for manual intervention. The project is currently at the prototype stage, with a patent application in progress.",
       icon: Shield,
       color: "quantum",
       features: [
