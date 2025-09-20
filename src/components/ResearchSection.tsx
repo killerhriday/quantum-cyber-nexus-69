@@ -130,7 +130,7 @@ const ResearchSection = () => {
                   <div className="space-y-6">
                     <p className="text-muted-foreground leading-relaxed">
                      This research presents CrypTech, cybersecurity platform developed by me.
-                     this protech large number of devcies from virus and hacker all run by AI made by me
+                     this protects large number of devcies from virus and hacker all run by AI made by me
                      The framework is designed to address the emerging security challenges posed by advances in quantum computing.
                          My work integrates rigorous mathematical foundations with practical implementation strategies.
                     CrypTech provides robust, real-world solutions for modern cybersecurity applications.
