@@ -1,204 +1,206 @@
-import React, { useState, useEffect, Suspense } from 'react';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls, PerspectiveCamera } from '@react-three/drei';
-import QuantumComputer3D from './QuantumComputer3D';
-import BinaryParticleSystem from './BinaryParticleSystem';
+import { useState, useEffect } from "react";
+import { Brain, Zap } from "lucide-react";
 
-interface LoadingScreenProps {
-  onComplete: () => void;
-}
+const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
+  const [stage, setStage] = useState(0);
+  const [particles, setParticles] = useState<Array<{ id: number; x: number; y: number; delay: number }>>([]);
 
-const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
-  const [stage, setStage] = useState<'grid' | 'computer' | 'blast' | 'binary' | 'align' | 'fade'>('grid');
-  const [overlayOpacity, setOverlayOpacity] = useState(1);
-  const [sweepProgress, setSweepProgress] = useState(0);
-  const [showParticles, setShowParticles] = useState(false);
-
-  // Stage progression with realistic timing
   useEffect(() => {
-    const timers = [
-      setTimeout(() => setStage('computer'), 2000),    // Grid → Computer materialization
-      setTimeout(() => setStage('blast'), 5000),       // Computer → Energy buildup
-      setTimeout(() => {
-        setStage('binary');
-        setShowParticles(true);
-      }, 6000),                                        // Blast → Binary particle creation
-      setTimeout(() => setStage('align'), 8000),       // Binary → Intelligent targeting
-      setTimeout(() => setStage('fade'), 11000),       // Align → Data sweep begins
-      setTimeout(() => startDataSweep(), 11500),       // Begin data sweep effect
-      setTimeout(() => onComplete(), 14000)            // Complete transition
-    ];
+    // Generate random particles
+    const particleArray = Array.from({ length: 50 }, (_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      delay: Math.random() * 2,
+    }));
+    setParticles(particleArray);
 
-    return () => timers.forEach(clearTimeout);
+    // Stage progression
+    const timer1 = setTimeout(() => setStage(1), 500);
+    const timer2 = setTimeout(() => setStage(2), 2000);
+    const timer3 = setTimeout(() => setStage(3), 3500);
+    const timer4 = setTimeout(() => setStage(4), 4500);
+    const timer5 = setTimeout(() => onComplete(), 5500);
+
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+      clearTimeout(timer3);
+      clearTimeout(timer4);
+      clearTimeout(timer5);
+    };
   }, [onComplete]);
 
-  // Data sweep effect - transforms particles to website
-  const startDataSweep = () => {
-    const sweepDuration = 2000; // 2 seconds
-    const startTime = Date.now();
-    
-    const sweep = () => {
-      const elapsed = Date.now() - startTime;
-      const progress = Math.min(elapsed / sweepDuration, 1);
-      
-      setSweepProgress(progress);
-      setOverlayOpacity(1 - progress);
-      
-      if (progress < 1) {
-        requestAnimationFrame(sweep);
-      }
-    };
-    
-    requestAnimationFrame(sweep);
-  };
-
-  // Handle particle blast trigger
-  const handleBlast = () => {
-    setShowParticles(true);
-  };
-
-  // Handle particle morph completion
-  const handleMorphComplete = () => {
-    // Particles have completed their transformation
-  };
-
   return (
-    <div 
-      className="fixed inset-0 z-50 bg-black"
-      style={{ opacity: overlayOpacity }}
-    >
+    <div className="fixed inset-0 z-[100] bg-black overflow-hidden">
       {/* Quantum Grid Background */}
-      <div 
-        className="absolute inset-0 transition-opacity duration-2000"
-        style={{ 
-          opacity: stage === 'grid' || stage === 'computer' ? 0.2 : 0,
-          backgroundImage: `
-            linear-gradient(rgba(64, 224, 208, 0.3) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(64, 224, 208, 0.3) 1px, transparent 1px)
-          `,
-          backgroundSize: '60px 60px',
-          animation: stage === 'grid' ? 'pulse 3s ease-in-out infinite' : 'none'
-        }}
-      />
-
-      {/* Ambient Energy Particles */}
       <div className="absolute inset-0">
-        {Array.from({ length: 50 }).map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-0.5 h-0.5 bg-cyan-400 rounded-full opacity-60"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animation: `float ${3 + Math.random() * 4}s ease-in-out infinite`,
-              animationDelay: `${Math.random() * 3}s`
-            }}
-          />
-        ))}
+        <div className="absolute inset-0 opacity-20">
+          {[...Array(20)].map((_, i) => (
+            <div
+              key={`h-${i}`}
+              className="absolute w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"
+              style={{
+                top: `${i * 5}%`,
+                animationDelay: `${i * 0.1}s`,
+              }}
+            />
+          ))}
+          {[...Array(20)].map((_, i) => (
+            <div
+              key={`v-${i}`}
+              className="absolute h-full w-px bg-gradient-to-b from-transparent via-primary/30 to-transparent"
+              style={{
+                left: `${i * 5}%`,
+                animationDelay: `${i * 0.1}s`,
+              }}
+            />
+          ))}
+        </div>
       </div>
 
-      {/* 3D Quantum Computer Scene */}
-      <div className="absolute inset-0">
-        <Canvas>
-          <Suspense fallback={null}>
-            <PerspectiveCamera makeDefault position={[0, 2, 8]} />
-            
-            {/* Lighting Setup */}
-            <ambientLight intensity={0.4} />
-            <pointLight position={[10, 10, 10]} intensity={0.8} />
-            <pointLight position={[-10, -10, -10]} intensity={0.4} color="#4f46e5" />
-            <spotLight 
-              position={[0, 5, 0]} 
-              angle={Math.PI / 6} 
-              intensity={1} 
-              color="#06b6d4"
-              castShadow 
-            />
-
-            {/* Quantum Computer Model */}
-            <QuantumComputer3D 
-              stage={stage} 
-              onBlast={handleBlast}
-            />
-
-            {/* Binary Particle System */}
-            {showParticles && (
-              <BinaryParticleSystem 
-                stage={stage}
-                particleCount={300}
-                onMorphComplete={handleMorphComplete}
-              />
-            )}
-
-            <OrbitControls 
-              enablePan={false} 
-              enableZoom={false} 
-              enableRotate={false}
-            />
-          </Suspense>
-        </Canvas>
-      </div>
-
-      {/* Data Sweep Effect */}
-      {stage === 'fade' && (
-        <div 
-          className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-400/20 to-transparent"
+      {/* Floating Particles */}
+      {particles.map((particle) => (
+        <div
+          key={particle.id}
+          className={`
+            absolute w-1 h-1 bg-primary/60 rounded-full
+            transition-all duration-2000 ease-out
+            ${stage >= 3 ? "animate-ping opacity-0" : "animate-pulse"}
+          `}
           style={{
-            transform: `translateY(${-100 + sweepProgress * 200}%)`,
-            transition: 'transform 0.1s ease-out'
+            left: `${particle.x}%`,
+            top: `${particle.y}%`,
+            animationDelay: `${particle.delay}s`,
+            transform: stage >= 3 
+              ? `translate(${Math.random() * 200 - 100}px, ${Math.random() * 200 - 100}px) scale(3)`
+              : "translate(0, 0) scale(1)",
           }}
         />
-      )}
+      ))}
 
-      {/* Status Display */}
-      <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 text-center">
-        <div className="text-cyan-400 font-mono text-lg mb-2">
-          {stage === 'grid' && 'Initializing Quantum Field Matrix...'}
-          {stage === 'computer' && 'Quantum Processing Unit Online'}
-          {stage === 'blast' && 'Engaging Quantum Superposition'}
-          {stage === 'binary' && 'Processing Quantum Information'}
-          {stage === 'align' && 'Resolving Quantum States'}
-          {stage === 'fade' && 'Materializing Digital Architecture'}
-        </div>
-        
-        {/* Progress Indicator */}
-        <div className="w-64 h-1 bg-gray-800 rounded-full mx-auto overflow-hidden">
-          <div 
-            className="h-full bg-gradient-to-r from-cyan-400 to-blue-500 transition-all duration-500"
-            style={{ 
-              width: `${
-                stage === 'grid' ? 20 : 
-                stage === 'computer' ? 40 : 
-                stage === 'blast' ? 60 : 
-                stage === 'binary' ? 80 : 
-                stage === 'align' ? 90 : 100
-              }%` 
-            }}
-          />
-        </div>
-      </div>
+      {/* Central AI Core */}
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="relative">
+          {/* Quantum Computer Core */}
+          <div
+            className={`
+              relative w-32 h-32 border-2 border-primary/50 rounded-full
+              transition-all duration-1000 ease-out
+              ${stage >= 1 ? "scale-100 opacity-100" : "scale-0 opacity-0"}
+              ${stage >= 2 ? "animate-spin" : ""}
+              ${stage >= 3 ? "scale-150 border-primary" : ""}
+            `}
+          >
+            {/* Inner rings */}
+            <div className="absolute inset-4 border border-primary/30 rounded-full animate-pulse" />
+            <div className="absolute inset-8 border border-primary/20 rounded-full animate-pulse" style={{ animationDelay: "0.5s" }} />
+            
+            {/* AI Brain Icon */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <Brain 
+                className={`
+                  h-12 w-12 text-primary
+                  transition-all duration-1000
+                  ${stage >= 2 ? "animate-pulse text-white" : ""}
+                  ${stage >= 3 ? "scale-125" : ""}
+                `} 
+              />
+            </div>
 
-      {/* Quantum Field Effects */}
-      <div className="absolute inset-0 pointer-events-none">
-        {/* Electric arcs during blast */}
-        {stage === 'blast' && (
-          <>
-            {Array.from({ length: 8 }).map((_, i) => (
+            {/* Energy Rings */}
+            {stage >= 2 && (
+              <>
+                <div className="absolute inset-0 border-2 border-primary/40 rounded-full animate-ping" />
+                <div className="absolute inset-0 border-2 border-primary/20 rounded-full animate-ping" style={{ animationDelay: "0.5s" }} />
+              </>
+            )}
+
+            {/* Lightning Effects */}
+            {stage >= 2 && (
+              <div className="absolute inset-0">
+                {[...Array(8)].map((_, i) => (
+                  <div
+                    key={i}
+                    className="absolute w-px h-8 bg-gradient-to-b from-primary to-transparent"
+                    style={{
+                      left: "50%",
+                      top: "50%",
+                      transform: `rotate(${i * 45}deg) translateY(-40px)`,
+                      animationDelay: `${i * 0.1}s`,
+                    }}
+                  >
+                    <Zap className="h-3 w-3 text-primary animate-pulse" />
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Welcome Text */}
+          <div
+            className={`
+              absolute -bottom-20 left-1/2 -translate-x-1/2
+              transition-all duration-1000 ease-out
+              ${stage >= 1 ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
+            `}
+          >
+            <div className="text-center">
+              <h1 className="text-2xl font-bold text-white mb-2 tracking-wider">
+                WELCOME
+              </h1>
+              <div className="flex items-center justify-center gap-2 text-primary/80 text-sm">
+                <div className="w-8 h-px bg-gradient-to-r from-transparent to-primary/50" />
+                <span className="font-mono">HRIDAY.H.PATEL</span>
+                <div className="w-8 h-px bg-gradient-to-l from-transparent to-primary/50" />
+              </div>
+            </div>
+          </div>
+
+          {/* Loading Progress */}
+          <div
+            className={`
+              absolute -bottom-32 left-1/2 -translate-x-1/2 w-64
+              transition-all duration-500 ease-out
+              ${stage >= 1 ? "opacity-100" : "opacity-0"}
+            `}
+          >
+            <div className="h-px bg-primary/20 rounded-full overflow-hidden">
               <div
-                key={i}
-                className="absolute w-px bg-gradient-to-t from-transparent via-cyan-400 to-transparent opacity-80"
-                style={{
-                  left: `${50 + Math.cos(i * Math.PI / 4) * 30}%`,
-                  top: `${50 + Math.sin(i * Math.PI / 4) * 30}%`,
-                  height: '200px',
-                  transform: 'rotate(' + (i * 45) + 'deg)',
-                  animation: 'pulse 0.3s ease-in-out infinite'
+                className={`
+                  h-full bg-gradient-to-r from-primary to-white
+                  transition-all duration-3000 ease-out
+                  ${stage >= 1 ? "w-full" : "w-0"}
+                `}
+                style={{ 
+                  boxShadow: "0 0 10px hsl(var(--primary))",
                 }}
               />
-            ))}
-          </>
-        )}
+            </div>
+            <div className="flex justify-between text-xs text-primary/60 mt-2 font-mono">
+              <span>portfolio</span>
+              <span>LOADING...</span>
+              <span>100%</span>
+            </div>
+          </div>
+        </div>
       </div>
+
+      {/* Explosion Effect */}
+      {stage >= 4 && (
+        <div className="absolute inset-0 bg-white/10 animate-pulse">
+          <div className="absolute inset-0 bg-gradient-radial from-white/20 via-primary/10 to-transparent animate-ping" />
+        </div>
+      )}
+
+      {/* Fade Out */}
+      <div
+        className={`
+          absolute inset-0 bg-black
+          transition-opacity duration-1000 ease-out
+          ${stage >= 4 ? "opacity-0" : "opacity-0"}
+        `}
+      />
     </div>
   );
 };
