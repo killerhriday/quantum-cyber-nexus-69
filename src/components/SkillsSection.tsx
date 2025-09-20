@@ -8,7 +8,7 @@ const SkillsSection = () => {
       title: "Programming Languages",
       icon: Code2,
       color: "primary",
-      tools: ["Python", "C++", "Java", "JavaScript"]
+      tools: ["Python", "C++", "SQL", "JavaScript", "ruby"]
     },
     {
       title: "AI / Machine Learning / Neural Networks",
@@ -26,7 +26,7 @@ const SkillsSection = () => {
       title: "Cybersecurity / Ethical Hacking Tools",
       icon: Lock,
       color: "cyber",
-      tools: ["Burp Suite", "Ghidra", "IDA Free", "Linux Tools (nmap, netcat, Wireshark, etc.)", "CTF Platforms / Hacking Frameworks"]
+      tools: ["Burp Suite", "Ghidra", "IDA", "Linux Tools (nmap, netcat, Wireshark, etc.)", "CTF Platforms / Hacking Frameworks"]
     },
     {
       title: "Software Development / Automation",
