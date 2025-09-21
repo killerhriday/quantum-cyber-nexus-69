@@ -1,7 +1,9 @@
+import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Shield, Terminal, Brain, ExternalLink, Github, Beaker } from "lucide-react";
+import { useStaggeredAnimation } from "@/hooks/useScrollAnimation";
 
 const ProjectsSection = () => {
   const projects = [
@@ -56,6 +58,8 @@ const ProjectsSection = () => {
     }
   ];
 
+  const { elementRef, visibleItems } = useStaggeredAnimation(projects.length, 200);
+
   const getColorClasses = (color: string) => {
     switch (color) {
       case "quantum":
@@ -83,9 +87,18 @@ const ProjectsSection = () => {
   };
 
   return (
-    <section id="projects" className="py-20 px-6 bg-secondary/20">
+    <motion.section 
+      ref={elementRef}
+      id="projects" 
+      className="py-20 px-6 bg-secondary/20"
+    >
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: visibleItems.length > 0 ? 1 : 0, y: visibleItems.length > 0 ? 0 : 30 }}
+          transition={{ duration: 0.8 }}
+        >
           <div className="flex items-center justify-center gap-3 mb-6">
             <Beaker className="h-8 w-8 text-muted-foreground" />
             <h2 className="text-3xl md:text-4xl font-light tracking-wide">
@@ -95,67 +108,94 @@ const ProjectsSection = () => {
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto font-light">
             Patent-pending innovations at the intersection of quantum computing, cybersecurity, and artificial intelligence
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => {
             const colors = getColorClasses(project.color);
             const IconComponent = project.icon;
+            const isVisible = visibleItems.includes(index);
             
             return (
-              <Card 
-                key={index} 
-                className={`p-6 bg-card/50 backdrop-blur-sm border ${colors.border} hover:shadow-lg transition-all duration-300 group`}
+              <motion.div
+                key={index}
+                initial={{ 
+                  opacity: 0, 
+                  y: 100,
+                  rotateX: 45,
+                  scale: 0.8
+                }}
+                animate={{
+                  opacity: isVisible ? 1 : 0,
+                  y: isVisible ? 0 : 100,
+                  rotateX: isVisible ? 0 : 45,
+                  scale: isVisible ? 1 : 0.8
+                }}
+                transition={{
+                  duration: 0.8,
+                  ease: "easeOut",
+                  type: "spring",
+                  stiffness: 100
+                }}
+                whileHover={{
+                  scale: 1.05,
+                  rotateY: 5,
+                  rotateX: -5
+                }}
               >
-                <div className="flex items-center gap-3 mb-4">
-                  <div className={`p-3 rounded-lg ${colors.bg}`}>
-                    <IconComponent className={`h-6 w-6 ${colors.text}`} />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold">{project.title}</h3>
-                    <Badge className={colors.badge}>{project.status}</Badge>
-                  </div>
-                </div>
-
-                <p className={`font-medium text-sm ${colors.text} mb-3`}>
-                  {project.subtitle}
-                </p>
-
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  {project.description}
-                </p>
-
-                <div className="space-y-4">
-                  <div>
-                    <h4 className="font-semibold mb-2">Key Features</h4>
-                    <div className="grid grid-cols-1 gap-1">
-                      {project.features.map((feature, idx) => (
-                        <div key={idx} className="text-sm text-muted-foreground flex items-center gap-2">
-                          <div className={`w-1.5 h-1.5 rounded-full ${colors.bg.replace('/10', '')}`} />
-                          {feature}
-                        </div>
-                      ))}
+                <Card 
+                  className={`p-6 bg-card/50 backdrop-blur-sm border ${colors.border} hover:shadow-lg transition-all duration-300 group h-full`}
+                >
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className={`p-3 rounded-lg ${colors.bg}`}>
+                      <IconComponent className={`h-6 w-6 ${colors.text}`} />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold">{project.title}</h3>
+                      <Badge className={colors.badge}>{project.status}</Badge>
                     </div>
                   </div>
 
-                  <div>
-                    <h4 className="font-semibold mb-2">Technologies</h4>
-                    <div className="flex flex-wrap gap-1">
-                      {project.tech.map((tech, idx) => (
-                        <Badge key={idx} variant="outline" className="text-xs">
-                          {tech}
-                        </Badge>
-                      ))}
+                  <p className={`font-medium text-sm ${colors.text} mb-3`}>
+                    {project.subtitle}
+                  </p>
+
+                  <p className="text-muted-foreground mb-6 leading-relaxed">
+                    {project.description}
+                  </p>
+
+                  <div className="space-y-4">
+                    <div>
+                      <h4 className="font-semibold mb-2">Key Features</h4>
+                      <div className="grid grid-cols-1 gap-1">
+                        {project.features.map((feature, idx) => (
+                          <div key={idx} className="text-sm text-muted-foreground flex items-center gap-2">
+                            <div className={`w-1.5 h-1.5 rounded-full ${colors.bg.replace('/10', '')}`} />
+                            {feature}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div>
+                      <h4 className="font-semibold mb-2">Technologies</h4>
+                      <div className="flex flex-wrap gap-1">
+                        {project.tech.map((tech, idx) => (
+                          <Badge key={idx} variant="outline" className="text-xs">
+                            {tech}
+                          </Badge>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                </div>
 
-              </Card>
+                </Card>
+              </motion.div>
             );
           })}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
