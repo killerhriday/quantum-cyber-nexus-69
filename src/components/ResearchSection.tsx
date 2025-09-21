@@ -1,23 +1,12 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { ExternalLink, FileText, Award } from "lucide-react";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const ResearchSection = () => {
-  const { elementRef, isVisible } = useScrollAnimation();
-  
   return (
-    <motion.section 
-      ref={elementRef}
-      id="research" 
-      className="py-24 bg-muted/30"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: isVisible ? 1 : 0 }}
-      transition={{ duration: 0.8 }}
-    >
+    <section id="research" className="py-24 bg-muted/30">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">
@@ -34,21 +23,7 @@ const ResearchSection = () => {
 
         {/* Research Paper Card */}
         <div className="max-w-4xl mx-auto">
-          <motion.div
-            initial={{ y: 50, opacity: 0, rotateY: -15 }}
-            animate={{ 
-              y: isVisible ? 0 : 50, 
-              opacity: isVisible ? 1 : 0,
-              rotateY: isVisible ? 0 : -15
-            }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-            whileHover={{ 
-              scale: 1.02,
-              rotateX: 2,
-              rotateY: 2
-            }}
-          >
-            <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
+          <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-0">
               
               {/* Paper Preview */}
@@ -236,11 +211,10 @@ const ResearchSection = () => {
                 </CardContent>
               </div>
             </div>
-            </Card>
-          </motion.div>
+          </Card>
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 };
 

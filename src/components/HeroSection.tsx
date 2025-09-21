@@ -1,25 +1,15 @@
-import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Mail, Linkedin, Award, Code2, ExternalLink } from "lucide-react";
 import sophisticatedHero from "@/assets/sophisticated-hero.jpg";
 import profileNew from "@/assets/profile-new.jpg";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const HeroSection = () => {
-  const { elementRef, isVisible } = useScrollAnimation();
-
   const scrollToAbout = () => {
     document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <motion.section 
-      ref={elementRef}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: isVisible ? 1 : 0 }}
-      transition={{ duration: 0.8 }}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
-    >
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Sophisticated Background */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -62,34 +52,13 @@ const HeroSection = () => {
 
           {/* Right Column - Content */}
           <div className="space-y-8">
-            <motion.div 
-              initial={{ y: 50, opacity: 0 }}
-              animate={{ y: isVisible ? 0 : 50, opacity: isVisible ? 1 : 0 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
-            >
-              <motion.h1 
-                className="text-4xl md:text-6xl lg:text-7xl font-light tracking-tight mb-6"
-                initial={{ scale: 0.9 }}
-                animate={{ scale: isVisible ? 1 : 0.9 }}
-                transition={{ delay: 0.4, duration: 0.8 }}
-              >
-                <motion.span 
-                  className="block text-foreground"
-                  initial={{ x: -100, opacity: 0 }}
-                  animate={{ x: isVisible ? 0 : -100, opacity: isVisible ? 1 : 0 }}
-                  transition={{ delay: 0.6, duration: 0.8 }}
-                >
-                  Hriday H.
-                </motion.span>
-                <motion.span 
-                  className="block text-2xl md:text-3xl lg:text-4xl text-muted-foreground font-mono"
-                  initial={{ x: 100, opacity: 0 }}
-                  animate={{ x: isVisible ? 0 : 100, opacity: isVisible ? 1 : 0 }}
-                  transition={{ delay: 0.8, duration: 0.8 }}
-                >
+            <div className="animate-fade-in-up">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-light tracking-tight mb-6">
+                <span className="block text-foreground">Hriday H.</span>
+                <span className="block text-2xl md:text-3xl lg:text-4xl text-muted-foreground font-mono">
                   PATEL
-                </motion.span>
-              </motion.h1>
+                </span>
+              </h1>
               
               <div className="space-y-4 mb-8">
                 <h2 className="text-xl md:text-2xl font-medium text-muted-foreground">
@@ -106,17 +75,12 @@ const HeroSection = () => {
                 </div>
               </div>
 
-              <motion.p 
-                className="text-lg leading-relaxed text-muted-foreground max-w-2xl"
-                initial={{ y: 30, opacity: 0 }}
-                animate={{ y: isVisible ? 0 : 30, opacity: isVisible ? 1 : 0 }}
-                transition={{ delay: 1.2, duration: 0.8 }}
-              >
+              <p className="text-lg leading-relaxed text-muted-foreground max-w-2xl">
                 Pioneering the intersection of quantum mechanics and cybersecurity. 
                 Currently developing patent-pending solutions that redefine digital security 
                 architecture for the next generation.
-              </motion.p>
-            </motion.div>
+              </p>
+            </div>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-12 animate-fade-in-up animation-delay-500">
               <Button 
@@ -179,7 +143,7 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 };
 
