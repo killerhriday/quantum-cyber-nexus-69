@@ -83,21 +83,21 @@ const ProjectsSection = () => {
   };
 
   return (
-    <section id="projects" className="py-20 px-6 bg-secondary/20">
+    <section id="projects" className="py-16 sm:py-20 px-4 sm:px-6 bg-secondary/20">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <Beaker className="h-8 w-8 text-muted-foreground" />
-            <h2 className="text-3xl md:text-4xl font-light tracking-wide">
+        <div className="text-center mb-12 sm:mb-16">
+          <div className="flex items-center justify-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+            <Beaker className="h-6 w-6 sm:h-8 sm:w-8 text-muted-foreground" />
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-light tracking-wide">
               Research <span className="font-mono text-muted-foreground">Projects</span>
             </h2>
           </div>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto font-light">
+          <p className="text-sm sm:text-base lg:text-lg text-muted-foreground max-w-3xl mx-auto font-light px-4 sm:px-0">
             Patent-pending innovations at the intersection of quantum computing, cybersecurity, and artificial intelligence
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {projects.map((project, index) => {
             const colors = getColorClasses(project.color);
             const IconComponent = project.icon;
@@ -105,41 +105,41 @@ const ProjectsSection = () => {
             return (
               <Card 
                 key={index} 
-                className={`p-6 bg-card/50 backdrop-blur-sm border ${colors.border} hover:shadow-lg transition-all duration-300 group`}
+                className={`p-4 sm:p-6 bg-card/50 backdrop-blur-sm border ${colors.border} hover:shadow-lg transition-all duration-300 group`}
               >
-                <div className="flex items-center gap-3 mb-4">
-                  <div className={`p-3 rounded-lg ${colors.bg}`}>
-                    <IconComponent className={`h-6 w-6 ${colors.text}`} />
+                <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-4">
+                  <div className={`p-2 sm:p-3 rounded-lg ${colors.bg} w-fit`}>
+                    <IconComponent className={`h-5 w-5 sm:h-6 sm:w-6 ${colors.text}`} />
                   </div>
-                  <div>
-                    <h3 className="text-xl font-bold">{project.title}</h3>
-                    <Badge className={colors.badge}>{project.status}</Badge>
+                  <div className="min-w-0 flex-1">
+                    <h3 className="text-lg sm:text-xl font-bold break-words">{project.title}</h3>
+                    <Badge className={`${colors.badge} text-xs w-fit`}>{project.status}</Badge>
                   </div>
                 </div>
 
-                <p className={`font-medium text-sm ${colors.text} mb-3`}>
+                <p className={`font-medium text-xs sm:text-sm ${colors.text} mb-3`}>
                   {project.subtitle}
                 </p>
 
-                <p className="text-muted-foreground mb-6 leading-relaxed">
+                <p className="text-xs sm:text-sm text-muted-foreground mb-4 sm:mb-6 leading-relaxed">
                   {project.description}
                 </p>
 
-                <div className="space-y-4">
+                <div className="space-y-3 sm:space-y-4">
                   <div>
-                    <h4 className="font-semibold mb-2">Key Features</h4>
+                    <h4 className="font-semibold mb-2 text-sm sm:text-base">Key Features</h4>
                     <div className="grid grid-cols-1 gap-1">
                       {project.features.map((feature, idx) => (
-                        <div key={idx} className="text-sm text-muted-foreground flex items-center gap-2">
-                          <div className={`w-1.5 h-1.5 rounded-full ${colors.bg.replace('/10', '')}`} />
-                          {feature}
+                        <div key={idx} className="text-xs sm:text-sm text-muted-foreground flex items-start gap-2">
+                          <div className={`w-1.5 h-1.5 rounded-full ${colors.bg.replace('/10', '')} flex-shrink-0 mt-1.5`} />
+                          <span className="break-words">{feature}</span>
                         </div>
                       ))}
                     </div>
                   </div>
 
                   <div>
-                    <h4 className="font-semibold mb-2">Technologies</h4>
+                    <h4 className="font-semibold mb-2 text-sm sm:text-base">Technologies</h4>
                     <div className="flex flex-wrap gap-1">
                       {project.tech.map((tech, idx) => (
                         <Badge key={idx} variant="outline" className="text-xs">
