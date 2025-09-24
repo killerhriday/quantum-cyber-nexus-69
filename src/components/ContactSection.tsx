@@ -2,8 +2,14 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Mail, MapPin, Calendar, Target, Rocket, Brain } from "lucide-react";
+import { motion } from "framer-motion";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const ContactSection = () => {
+  const { ref: titleRef, isInView: titleInView } = useScrollAnimation(0.2);
+  const { ref: contentRef, isInView: contentInView } = useScrollAnimation(0.1);
+  const { ref: visionRef, isInView: visionInView } = useScrollAnimation(0.3);
+
   const ambitions = [
     {
       title: "Quantum Computing",
@@ -37,34 +43,49 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-16 sm:py-20 px-4 sm:px-6 bg-secondary/20">
+    <section id="contact" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-secondary/20">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-light tracking-wide">
+        <motion.div 
+          ref={titleRef}
+          className="text-center mb-8 sm:mb-12 md:mb-16"
+          initial={{ opacity: 0, y: 50 }}
+          animate={titleInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light tracking-wide">
             Academic <span className="font-mono text-muted-foreground">Trajectory</span>
           </h2>
-          <p className="text-sm sm:text-base lg:text-lg text-muted-foreground max-w-3xl mx-auto font-light px-4 sm:px-0">
+          <p className="text-xs sm:text-sm md:text-base lg:text-lg text-muted-foreground max-w-3xl mx-auto font-light px-2 sm:px-4 lg:px-0">
             Charting a course toward groundbreaking research in quantum computation and cybersecurity
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 mb-12 sm:mb-16">
+        <motion.div 
+          ref={contentRef}
+          className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 mb-8 sm:mb-12 md:mb-16"
+          initial={{ opacity: 0 }}
+          animate={contentInView ? { opacity: 1 } : { opacity: 0 }}
+          transition={{ duration: 0.8 }}
+        >
           {/* Ambitions */}
-          <div>
-            <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Academic Ambitions</h3>
-            <div className="space-y-3 sm:space-y-4">
-              {ambitions.map((ambition, index) => {
+          <motion.div
+            initial={{ opacity: 0, x: -100 }}
+            animate={contentInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4 md:mb-6">Academic Ambitions</h3>
+            <div className="space-y-2 sm:space-y-3 md:space-y-4">{ambitions.map((ambition, index) => {
                 const IconComponent = ambition.icon;
                 const colorClasses = getColorClasses(ambition.color);
                 
                 return (
-                  <Card key={index} className={`p-3 sm:p-4 border ${colorClasses}`}>
-                    <div className="flex items-start gap-3 sm:gap-4">
-                      <div className={`p-2 rounded-lg ${colorClasses} flex-shrink-0`}>
-                        <IconComponent className="h-4 w-4 sm:h-5 sm:w-5" />
+                  <Card key={index} className={`p-2 sm:p-3 md:p-4 border ${colorClasses}`}>
+                    <div className="flex items-start gap-2 sm:gap-3 md:gap-4">
+                      <div className={`p-1.5 sm:p-2 rounded-lg ${colorClasses} flex-shrink-0`}>
+                        <IconComponent className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5" />
                       </div>
                       <div className="min-w-0">
-                        <h4 className="font-semibold text-sm sm:text-base break-words">{ambition.title}</h4>
+                        <h4 className="font-semibold text-xs sm:text-sm md:text-base break-words">{ambition.title}</h4>
                         <p className="text-xs sm:text-sm text-muted-foreground break-words">{ambition.description}</p>
                       </div>
                     </div>
@@ -73,8 +94,8 @@ const ContactSection = () => {
               })}
             </div>
 
-            <div className="mt-6 sm:mt-8">
-              <h4 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Intended Academic Path</h4>
+            <div className="mt-4 sm:mt-6 md:mt-8">
+              <h4 className="font-semibold mb-2 sm:mb-3 md:mb-4 text-sm sm:text-base">Intended Academic Path</h4>
               <div className="space-y-2">
                 <div>
                   <span className="text-xs sm:text-sm text-muted-foreground">Majors:</span>
@@ -93,44 +114,57 @@ const ContactSection = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Contact Info */}
-          <Card className="p-4 sm:p-6 bg-gradient-to-br from-card/80 to-secondary/50 backdrop-blur-sm border-border/50">
-            <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Get In Touch</h3>
-            
-            <div className="space-y-2 sm:space-y-3 mb-4 sm:mb-6">
-              <div className="flex items-center gap-2 sm:gap-3">
-                <MapPin className="h-4 w-4 sm:h-5 sm:w-5 text-primary flex-shrink-0" />
-                <span className="text-sm sm:text-base break-words">Ahmedabad, India</span>
+          <motion.div
+            initial={{ opacity: 0, x: 100 }}
+            animate={contentInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <Card className="p-3 sm:p-4 md:p-6 bg-gradient-to-br from-card/80 to-secondary/50 backdrop-blur-sm border-border/50 h-full">
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3 md:mb-4">Get In Touch</h3>
+              
+              <div className="space-y-2 sm:space-y-3 mb-3 sm:mb-4 md:mb-6">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <MapPin className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5 text-primary flex-shrink-0" />
+                  <span className="text-xs sm:text-sm md:text-base break-words">Ahmedabad, India</span>
+                </div>
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <Mail className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5 text-cyber flex-shrink-0" />
+                  <span className="text-xs sm:text-sm md:text-base break-all">hriday_patel@hotmail.com</span>
+                </div>
               </div>
-              <div className="flex items-center gap-2 sm:gap-3">
-                <Mail className="h-4 w-4 sm:h-5 sm:w-5 text-cyber flex-shrink-0" />
-                <span className="text-sm sm:text-base break-all">hriday_patel@hotmail.com</span>
-              </div>
-            </div>
 
-            <div className="space-y-2 sm:space-y-3">
-              <p className="text-xs text-muted-foreground text-center leading-relaxed">
-                Interested in quantum computing research, cybersecurity innovation, 
-                or collaborative projects in emerging technologies
-              </p>
-            </div>
-          </Card>
-        </div>
+              <div className="space-y-2 sm:space-y-3">
+                <p className="text-xs text-muted-foreground text-center leading-relaxed px-2">
+                  Interested in quantum computing research, cybersecurity innovation, 
+                  or collaborative projects in emerging technologies
+                </p>
+              </div>
+            </Card>
+          </motion.div>
+        </motion.div>
 
         {/* Vision Statement */}
-        <Card className="p-4 sm:p-6 lg:p-8 bg-gradient-to-r from-quantum/5 to-cyber/5 border-primary/20">
-          <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-center">My Commitment</h3>
-          <blockquote className="text-sm sm:text-base lg:text-lg text-center text-muted-foreground leading-relaxed italic">
-            "To architect solutions that don't just solve today's problems, but anticipate tomorrow's challenges. 
-            Through the convergence of quantum computing, cybersecurity, and AI, I aim to build a future where 
-            technology empowers and protects, rather than compromises."
-          </blockquote>
-          <div className="text-center mt-3 sm:mt-4">
-            <span className="text-primary font-semibold text-sm sm:text-base">— Hriday H Patel</span>
-          </div>
-        </Card>
+        <motion.div
+          ref={visionRef}
+          initial={{ opacity: 0, y: 50 }}
+          animate={visionInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          <Card className="p-3 sm:p-4 md:p-6 lg:p-8 bg-gradient-to-r from-quantum/5 to-cyber/5 border-primary/20">
+            <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3 md:mb-4 text-center">My Commitment</h3>
+            <blockquote className="text-xs sm:text-sm md:text-base lg:text-lg text-center text-muted-foreground leading-relaxed italic px-2 sm:px-0">
+              "To architect solutions that don't just solve today's problems, but anticipate tomorrow's challenges. 
+              Through the convergence of quantum computing, cybersecurity, and AI, I aim to build a future where 
+              technology empowers and protects, rather than compromises."
+            </blockquote>
+            <div className="text-center mt-2 sm:mt-3 md:mt-4">
+              <span className="text-primary font-semibold text-xs sm:text-sm md:text-base">— Hriday H Patel</span>
+            </div>
+          </Card>
+        </motion.div>
       </div>
     </section>
   );

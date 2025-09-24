@@ -2,8 +2,13 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Shield, Terminal, Brain, ExternalLink, Github, Beaker } from "lucide-react";
+import { motion } from "framer-motion";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const ProjectsSection = () => {
+  const { ref: titleRef, isInView: titleInView } = useScrollAnimation(0.2);
+  const { ref: projectsRef, isInView: projectsInView } = useScrollAnimation(0.1);
+
   const projects = [
     {
       title: "CRYPTECH",
@@ -83,30 +88,42 @@ const ProjectsSection = () => {
   };
 
   return (
-    <section id="projects" className="py-16 sm:py-20 px-4 sm:px-6 bg-secondary/20">
+    <section id="projects" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-secondary/20">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12 sm:mb-16">
-          <div className="flex items-center justify-center gap-2 sm:gap-3 mb-4 sm:mb-6">
-            <Beaker className="h-6 w-6 sm:h-8 sm:w-8 text-muted-foreground" />
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-light tracking-wide">
+        <motion.div 
+          ref={titleRef}
+          className="text-center mb-8 sm:mb-12 md:mb-16"
+          initial={{ opacity: 0, y: 50 }}
+          animate={titleInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ duration: 0.8 }}
+        >
+          <div className="flex items-center justify-center gap-2 sm:gap-3 mb-3 sm:mb-4 md:mb-6">
+            <Beaker className="h-5 w-5 sm:h-6 sm:w-6 md:h-8 md:w-8 text-muted-foreground" />
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light tracking-wide">
               Research <span className="font-mono text-muted-foreground">Projects</span>
             </h2>
           </div>
-          <p className="text-sm sm:text-base lg:text-lg text-muted-foreground max-w-3xl mx-auto font-light px-4 sm:px-0">
+          <p className="text-xs sm:text-sm md:text-base lg:text-lg text-muted-foreground max-w-3xl mx-auto font-light px-2 sm:px-4 lg:px-0">
             Patent-pending innovations at the intersection of quantum computing, cybersecurity, and artificial intelligence
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <motion.div 
+          ref={projectsRef}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8"
+          initial={{ opacity: 0 }}
+          animate={projectsInView ? { opacity: 1 } : { opacity: 0 }}
+          transition={{ duration: 0.8 }}
+        >
           {projects.map((project, index) => {
             const colors = getColorClasses(project.color);
             const IconComponent = project.icon;
             
             return (
-              <Card 
-                key={index} 
-                className={`p-4 sm:p-6 bg-card/50 backdrop-blur-sm border ${colors.border} hover:shadow-lg transition-all duration-300 group`}
-              >
+                  <Card 
+                    key={index} 
+                    className={`p-3 sm:p-4 md:p-6 bg-card/50 backdrop-blur-sm border ${colors.border} hover:shadow-lg transition-all duration-300 group`}
+                  >
                 <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-4">
                   <div className={`p-2 sm:p-3 rounded-lg ${colors.bg} w-fit`}>
                     <IconComponent className={`h-5 w-5 sm:h-6 sm:w-6 ${colors.text}`} />
@@ -153,7 +170,7 @@ const ProjectsSection = () => {
               </Card>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
