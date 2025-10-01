@@ -4,7 +4,6 @@ import { Badge } from "@/components/ui/badge";
 import { Mail, MapPin, Calendar, Target, Rocket, Brain } from "lucide-react";
 import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { TypewriterText } from "@/components/TypewriterText";
 
 const ContactSection = () => {
   const { ref: titleRef, isInView: titleInView } = useScrollAnimation(0.2);
@@ -54,14 +53,11 @@ const ContactSection = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light tracking-wide">
-            <TypewriterText text="Academic Trajectory" speed={50} />
+            Academic <span className="font-mono text-muted-foreground">Trajectory</span>
           </h2>
-          <TypewriterText 
-            text="Charting a course toward groundbreaking research in quantum computation and cybersecurity"
-            as="p"
-            className="text-xs sm:text-sm md:text-base lg:text-lg text-muted-foreground max-w-3xl mx-auto font-light px-2 sm:px-4 lg:px-0"
-            speed={25}
-          />
+          <p className="text-xs sm:text-sm md:text-base lg:text-lg text-muted-foreground max-w-3xl mx-auto font-light px-2 sm:px-4 lg:px-0">
+            Charting a course toward groundbreaking research in quantum computation and cybersecurity
+          </p>
         </motion.div>
 
         <motion.div 
@@ -89,18 +85,8 @@ const ContactSection = () => {
                         <IconComponent className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5" />
                       </div>
                       <div className="min-w-0">
-                        <TypewriterText 
-                          text={ambition.title}
-                          as="h4"
-                          className="font-semibold text-xs sm:text-sm md:text-base break-words"
-                          speed={50}
-                        />
-                        <TypewriterText 
-                          text={ambition.description}
-                          as="p"
-                          className="text-xs sm:text-sm text-muted-foreground break-words"
-                          speed={30}
-                        />
+                        <h4 className="font-semibold text-xs sm:text-sm md:text-base break-words">{ambition.title}</h4>
+                        <p className="text-xs sm:text-sm text-muted-foreground break-words">{ambition.description}</p>
                       </div>
                     </div>
                   </Card>
@@ -168,18 +154,12 @@ const ContactSection = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <Card className="p-3 sm:p-4 md:p-6 lg:p-8 bg-gradient-to-r from-quantum/5 to-cyber/5 border-primary/20">
-            <TypewriterText 
-              text="My Commitment"
-              as="h3"
-              className="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3 md:mb-4 text-center"
-              speed={50}
-            />
-            <TypewriterText 
-              text="To architect solutions that don't just solve today's problems, but anticipate tomorrow's challenges. Through the convergence of quantum computing, cybersecurity, and AI, I aim to build a future where technology empowers and protects, rather than compromises."
-              as="blockquote"
-              className="text-xs sm:text-sm md:text-base lg:text-lg text-center text-muted-foreground leading-relaxed italic px-2 sm:px-0"
-              speed={18}
-            />
+            <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3 md:mb-4 text-center">My Commitment</h3>
+            <blockquote className="text-xs sm:text-sm md:text-base lg:text-lg text-center text-muted-foreground leading-relaxed italic px-2 sm:px-0">
+              "To architect solutions that don't just solve today's problems, but anticipate tomorrow's challenges. 
+              Through the convergence of quantum computing, cybersecurity, and AI, I aim to build a future where 
+              technology empowers and protects, rather than compromises."
+            </blockquote>
             <div className="text-center mt-2 sm:mt-3 md:mt-4">
               <span className="text-primary font-semibold text-xs sm:text-sm md:text-base">— Hriday H Patel</span>
             </div>
