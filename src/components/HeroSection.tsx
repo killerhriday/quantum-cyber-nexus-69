@@ -3,6 +3,7 @@ import { ArrowDown, Mail, Linkedin, Award, Code2, ExternalLink } from "lucide-re
 import { motion } from "framer-motion";
 import sophisticatedHero from "@/assets/sophisticated-hero.jpg";
 import profileNew from "@/assets/profile-new.jpg";
+import { TypewriterText } from "@/components/TypewriterText";
 
 const HeroSection = () => {
   const scrollToAbout = () => {
@@ -65,32 +66,50 @@ const HeroSection = () => {
           >
             <div>
               <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light tracking-tight mb-3 sm:mb-4 md:mb-6">
-                <span className="block text-foreground">Hriday H.</span>
-                <span className="block text-base sm:text-xl md:text-2xl lg:text-3xl text-muted-foreground font-mono">
-                  PATEL
-                </span>
+                <TypewriterText 
+                  text="Hriday H." 
+                  as="span" 
+                  className="block text-foreground"
+                  speed={50}
+                />
+                <TypewriterText 
+                  text="PATEL" 
+                  as="span" 
+                  className="block text-base sm:text-xl md:text-2xl lg:text-3xl text-muted-foreground font-mono"
+                  speed={50}
+                />
               </h1>
               
               <div className="space-y-2 sm:space-y-3 mb-4 sm:mb-6">
-                <h2 className="text-base sm:text-lg md:text-xl font-medium text-muted-foreground">
-                  IBDP-2 student
-                </h2>
-                <h3 className="text-sm sm:text-base md:text-lg font-light text-muted-foreground/80">
-                  intended majors in quantum computing and cybersecurity
-                </h3>
+                <TypewriterText 
+                  text="IBDP-2 student"
+                  as="h2"
+                  className="text-base sm:text-lg md:text-xl font-medium text-muted-foreground"
+                  speed={40}
+                />
+                <TypewriterText 
+                  text="intended majors in quantum computing and cybersecurity"
+                  as="h3"
+                  className="text-sm sm:text-base md:text-lg font-light text-muted-foreground/80"
+                  speed={30}
+                />
                 <div className="flex items-center gap-2 justify-center lg:justify-start">
                   <Code2 className="h-3 w-3 sm:h-4 sm:w-4 text-muted-foreground" />
-                  <span className="font-mono text-xs sm:text-sm text-muted-foreground">
-                    AI Systems Developer
-                  </span>
+                  <TypewriterText 
+                    text="AI Systems Developer"
+                    as="span"
+                    className="font-mono text-xs sm:text-sm text-muted-foreground"
+                    speed={40}
+                  />
                 </div>
               </div>
 
-              <p className="text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed text-muted-foreground max-w-2xl mx-auto lg:mx-0 text-center lg:text-left px-2 sm:px-0">
-                Pioneering the intersection of quantum mechanics and cybersecurity. 
-                Currently developing patent-pending solutions that redefine digital security 
-                architecture for the next generation.
-              </p>
+              <TypewriterText 
+                text="Pioneering the intersection of quantum mechanics and cybersecurity. Currently developing patent-pending solutions that redefine digital security architecture for the next generation."
+                as="p"
+                className="text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed text-muted-foreground max-w-2xl mx-auto lg:mx-0 text-center lg:text-left px-2 sm:px-0"
+                speed={20}
+              />
             </div>
 
             <motion.div 

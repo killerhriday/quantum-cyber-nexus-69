@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Shield, Terminal, Brain, ExternalLink, Github, Beaker } from "lucide-react";
 import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { TypewriterText } from "@/components/TypewriterText";
 
 const ProjectsSection = () => {
   const { ref: titleRef, isInView: titleInView } = useScrollAnimation(0.2);
@@ -100,12 +101,15 @@ const ProjectsSection = () => {
           <div className="flex items-center justify-center gap-2 sm:gap-3 mb-3 sm:mb-4 md:mb-6">
             <Beaker className="h-5 w-5 sm:h-6 sm:w-6 md:h-8 md:w-8 text-muted-foreground" />
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light tracking-wide">
-              Research <span className="font-mono text-muted-foreground">Projects</span>
+              <TypewriterText text="Research Projects" speed={50} />
             </h2>
           </div>
-          <p className="text-xs sm:text-sm md:text-base lg:text-lg text-muted-foreground max-w-3xl mx-auto font-light px-2 sm:px-4 lg:px-0">
-            Patent-pending innovations at the intersection of quantum computing, cybersecurity, and artificial intelligence
-          </p>
+          <TypewriterText 
+            text="Patent-pending innovations at the intersection of quantum computing, cybersecurity, and artificial intelligence"
+            as="p"
+            className="text-xs sm:text-sm md:text-base lg:text-lg text-muted-foreground max-w-3xl mx-auto font-light px-2 sm:px-4 lg:px-0"
+            speed={25}
+          />
         </motion.div>
 
         <motion.div 
@@ -129,18 +133,29 @@ const ProjectsSection = () => {
                     <IconComponent className={`h-5 w-5 sm:h-6 sm:w-6 ${colors.text}`} />
                   </div>
                   <div className="min-w-0 flex-1">
-                    <h3 className="text-lg sm:text-xl font-bold break-words">{project.title}</h3>
+                    <TypewriterText 
+                      text={project.title}
+                      as="h3"
+                      className="text-lg sm:text-xl font-bold break-words"
+                      speed={60}
+                    />
                     <Badge className={`${colors.badge} text-xs w-fit`}>{project.status}</Badge>
                   </div>
                 </div>
 
-                <p className={`font-medium text-xs sm:text-sm ${colors.text} mb-3`}>
-                  {project.subtitle}
-                </p>
+                <TypewriterText 
+                  text={project.subtitle}
+                  as="p"
+                  className={`font-medium text-xs sm:text-sm ${colors.text} mb-3`}
+                  speed={40}
+                />
 
-                <p className="text-xs sm:text-sm text-muted-foreground mb-4 sm:mb-6 leading-relaxed">
-                  {project.description}
-                </p>
+                <TypewriterText 
+                  text={project.description}
+                  as="p"
+                  className="text-xs sm:text-sm text-muted-foreground mb-4 sm:mb-6 leading-relaxed"
+                  speed={20}
+                />
 
                 <div className="space-y-3 sm:space-y-4">
                   <div>
