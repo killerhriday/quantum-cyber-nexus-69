@@ -50,6 +50,10 @@ All colors MUST be HSL.
     --shadow-quantum: 0 0 40px hsl(0 0% 30% / 0.2);
     --shadow-cyber: 0 0 40px hsl(0 0% 40% / 0.2);
 
+    /* Apple-style smooth transitions */
+    --transition-smooth: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+
     --sidebar-background: 0 0% 8%;
     --sidebar-foreground: 0 0% 85%;
     --sidebar-primary: 0 0% 20%;
@@ -68,5 +72,16 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Apple-style smooth scroll */
+  @supports (scroll-behavior: smooth) {
+    html {
+      scroll-behavior: smooth;
+    }
   }
 }

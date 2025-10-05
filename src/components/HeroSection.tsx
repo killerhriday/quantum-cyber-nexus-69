@@ -10,14 +10,17 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Sophisticated Background */}
-      <div 
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+      {/* Sophisticated Background with Parallax */}
+      <motion.div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${sophisticatedHero})` }}
+        initial={{ scale: 1.1 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background/90" />
-      </div>
+      </motion.div>
       
       
       {/* Sophisticated Grid Pattern */}
@@ -35,9 +38,9 @@ const HeroSection = () => {
           {/* Left Column - Profile */}
           <motion.div 
             className="text-center lg:text-left order-2 lg:order-1"
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.5 }}
+            transition={{ duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="mb-4 sm:mb-6 lg:mb-0">
               <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 mx-auto lg:mx-0 mb-3 sm:mb-4 lg:mb-6 rounded-full overflow-hidden border-2 border-muted/30">
@@ -59,9 +62,9 @@ const HeroSection = () => {
           {/* Right Column - Content */}
           <motion.div 
             className="space-y-4 sm:space-y-6 lg:space-y-8 order-1 lg:order-2"
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.3 }}
+            transition={{ duration: 1.2, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
           >
             <div>
               <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light tracking-tight mb-3 sm:mb-4 md:mb-6">
@@ -97,7 +100,7 @@ const HeroSection = () => {
               className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6 sm:mb-8 md:mb-12 items-center lg:items-start"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
+              transition={{ duration: 1, delay: 0.9, ease: [0.16, 1, 0.3, 1] }}
             >
               <Button 
                 variant="default" 
@@ -142,9 +145,9 @@ const HeroSection = () => {
         {/* Achievement Metrics */}
         <motion.div 
           className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 md:gap-6 max-w-5xl mx-auto mt-8 sm:mt-12 md:mt-16 px-4"
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.2 }}
+          transition={{ duration: 1.2, delay: 1.1, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className="text-center">
             <div className="text-sm sm:text-lg md:text-xl lg:text-2xl font-light font-mono text-foreground mb-1">CS50</div>
