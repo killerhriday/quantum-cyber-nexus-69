@@ -43,7 +43,7 @@ const AboutSection = () => {
             animate={cardsInView ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.9, y: 40 }}
             transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           >
-            <Card className="p-3 sm:p-4 md:p-6 lg:p-8 bg-card/50 backdrop-blur-md border-primary/20 hover:border-primary/40 transition-all shadow-lg hover:shadow-[var(--shadow-glow)] h-full">
+            <Card className="p-3 sm:p-4 md:p-6 lg:p-8 bg-card/30 backdrop-blur-sm border-border/50 h-full">
               <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4 md:mb-6">
                 <Brain className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-muted-foreground" />
                 <h3 className="text-base sm:text-lg md:text-xl font-medium">Research Philosophy</h3>
@@ -78,7 +78,7 @@ const AboutSection = () => {
             animate={cardsInView ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.9, y: 40 }}
             transition={{ duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
           >
-            <Card className="p-3 sm:p-4 md:p-6 lg:p-8 bg-card/50 backdrop-blur-md border-primary/20 hover:border-primary/40 transition-all shadow-lg hover:shadow-[var(--shadow-glow)] h-full">
+            <Card className="p-3 sm:p-4 md:p-6 lg:p-8 bg-card/30 backdrop-blur-sm border-border/50 h-full">
               <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4 md:mb-6">
                 <School className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-muted-foreground" />
                 <h3 className="text-base sm:text-lg md:text-xl font-medium">Academic Excellence</h3>
@@ -128,7 +128,7 @@ const AboutSection = () => {
           animate={visionInView ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.95, y: 40 }}
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
         >
-          <Card className="p-3 sm:p-4 md:p-6 lg:p-8 bg-gradient-to-br from-primary/10 via-card/60 to-accent/10 border-primary/30 backdrop-blur-md shadow-xl">
+          <Card className="p-3 sm:p-4 md:p-6 lg:p-8 bg-gradient-to-r from-muted/10 to-muted/5 border-muted/30">
             <div className="text-center">
               <h3 className="text-base sm:text-lg md:text-xl font-medium mb-2 sm:mb-3 md:mb-4">Research Vision</h3>
               <p className="text-xs sm:text-sm md:text-base text-muted-foreground leading-relaxed max-w-4xl mx-auto font-light px-2 sm:px-0">

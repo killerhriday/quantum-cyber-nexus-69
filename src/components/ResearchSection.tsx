@@ -6,7 +6,7 @@ import { ExternalLink, FileText, Award } from "lucide-react";
 
 const ResearchSection = () => {
   return (
-    <section id="research" className="py-16 sm:py-20 lg:py-24 bg-gradient-to-b from-secondary/20 via-card/30 to-secondary/20">
+    <section id="research" className="py-16 sm:py-20 lg:py-24 bg-muted/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <div className="text-center mb-12 sm:mb-16">
@@ -23,11 +23,11 @@ const ResearchSection = () => {
 
         {/* Research Paper Card */}
         <div className="max-w-4xl mx-auto">
-          <Card className="overflow-hidden hover:shadow-xl hover:shadow-[var(--shadow-premium)] transition-all duration-300 border-primary/30">
+          <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-0">
               
               {/* Paper Preview */}
-              <div className="lg:col-span-1 bg-gradient-to-br from-primary/10 to-accent/10 p-4 sm:p-6 flex items-center justify-center">
+              <div className="lg:col-span-1 bg-muted/50 p-4 sm:p-6 flex items-center justify-center">
                 <Dialog>
                   <DialogTrigger asChild>
                     <div className="cursor-pointer group w-full max-w-[280px]">

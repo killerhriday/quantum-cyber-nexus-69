@@ -38,7 +38,7 @@ const StickyNav = () => {
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
-            ? "bg-background/90 backdrop-blur-xl border-b border-primary/30 shadow-[var(--shadow-glow)]"
+            ? "bg-background/80 backdrop-blur-xl border-b border-border/50 shadow-lg"
             : "bg-transparent"
         }`}
       >
@@ -47,11 +47,11 @@ const StickyNav = () => {
             {/* Logo */}
             <motion.button
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="text-lg font-light tracking-wide text-primary hover:text-accent transition-colors"
+              className="text-lg font-light tracking-wide text-foreground hover:text-muted-foreground transition-colors"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Hriday H. <span className="font-mono text-accent">Patel</span>
+              Hriday H. <span className="font-mono text-muted-foreground">Patel</span>
             </motion.button>
 
             {/* Desktop Navigation */}
@@ -66,7 +66,7 @@ const StickyNav = () => {
                   <Button
                     variant="ghost"
                     onClick={() => scrollToSection(item.href)}
-                    className="text-sm font-light hover:text-primary hover:bg-primary/10 transition-all"
+                    className="text-sm font-light hover:text-foreground transition-colors"
                   >
                     {item.label}
                   </Button>
@@ -95,7 +95,7 @@ const StickyNav = () => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed top-16 left-0 right-0 z-40 bg-background/95 backdrop-blur-xl border-b border-primary/30 md:hidden shadow-lg"
+            className="fixed top-16 left-0 right-0 z-40 bg-background/95 backdrop-blur-xl border-b border-border/50 md:hidden"
           >
             <div className="px-4 py-6 space-y-2">
               {navItems.map((item) => (
