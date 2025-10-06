@@ -1,7 +1,6 @@
 import StickyNav from "@/components/StickyNav";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
-import DeviceShowcase from "@/components/DeviceShowcase";
 import ProjectsSection from "@/components/ProjectsSection";
 import ResearchSection from "@/components/ResearchSection";
 import SkillsSection from "@/components/SkillsSection";
@@ -13,7 +12,6 @@ const Index = () => {
       <StickyNav />
       <HeroSection />
       <AboutSection />
-      <DeviceShowcase />
       <ProjectsSection />
       <ResearchSection />
       <SkillsSection />
