@@ -88,7 +88,7 @@ const ProjectsSection = () => {
   };
 
   return (
-    <section id="projects" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-secondary/20">
+    <section id="projects" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-gradient-to-b from-secondary/30 via-background to-secondary/30">
       <div className="max-w-6xl mx-auto">
         <motion.div 
           ref={titleRef}
@@ -131,7 +131,7 @@ const ProjectsSection = () => {
                 }}
               >
                   <Card 
-                    className={`p-3 sm:p-4 md:p-6 bg-card/50 backdrop-blur-sm border ${colors.border} hover:shadow-lg transition-all duration-500 group h-full`}
+                    className={`p-3 sm:p-4 md:p-6 bg-card/60 backdrop-blur-md border ${colors.border} hover:shadow-xl hover:shadow-[var(--shadow-glow)] transition-all duration-500 group h-full`}
                   >
                 <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-4">
                   <div className={`p-2 sm:p-3 rounded-lg ${colors.bg} w-fit`}>

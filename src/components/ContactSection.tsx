@@ -43,7 +43,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-secondary/20">
+    <section id="contact" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-gradient-to-b from-background via-secondary/30 to-background">
       <div className="max-w-6xl mx-auto">
         <motion.div 
           ref={titleRef}
@@ -79,7 +79,7 @@ const ContactSection = () => {
                 const colorClasses = getColorClasses(ambition.color);
                 
                 return (
-                  <Card key={index} className={`p-2 sm:p-3 md:p-4 border ${colorClasses}`}>
+                  <Card key={index} className={`p-2 sm:p-3 md:p-4 border ${colorClasses} backdrop-blur-sm hover:shadow-lg transition-all`}>
                     <div className="flex items-start gap-2 sm:gap-3 md:gap-4">
                       <div className={`p-1.5 sm:p-2 rounded-lg ${colorClasses} flex-shrink-0`}>
                         <IconComponent className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5" />
@@ -122,7 +122,7 @@ const ContactSection = () => {
             animate={contentInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <Card className="p-3 sm:p-4 md:p-6 bg-gradient-to-br from-card/80 to-secondary/50 backdrop-blur-sm border-border/50 h-full">
+            <Card className="p-3 sm:p-4 md:p-6 bg-card/60 backdrop-blur-md border-primary/30 hover:border-primary/50 transition-all shadow-lg hover:shadow-[var(--shadow-glow)] h-full">
               <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3 md:mb-4">Get In Touch</h3>
               
               <div className="space-y-2 sm:space-y-3 mb-3 sm:mb-4 md:mb-6">
@@ -153,7 +153,7 @@ const ContactSection = () => {
           animate={visionInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <Card className="p-3 sm:p-4 md:p-6 lg:p-8 bg-gradient-to-r from-quantum/5 to-cyber/5 border-primary/20">
+          <Card className="p-3 sm:p-4 md:p-6 lg:p-8 bg-gradient-to-br from-primary/15 via-accent/10 to-quantum/10 border-primary/40 backdrop-blur-md shadow-xl hover:shadow-[var(--shadow-premium)] transition-all">
             <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3 md:mb-4 text-center">My Commitment</h3>
             <blockquote className="text-xs sm:text-sm md:text-base lg:text-lg text-center text-muted-foreground leading-relaxed italic px-2 sm:px-0">
               "To architect solutions that don't just solve today's problems, but anticipate tomorrow's challenges. 

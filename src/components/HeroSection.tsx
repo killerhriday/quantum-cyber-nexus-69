@@ -19,7 +19,8 @@ const HeroSection = () => {
         animate={{ scale: 1 }}
         transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background/90" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/85 to-background" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,hsl(var(--primary)/0.15),transparent_50%)]" />
       </motion.div>
       
       
@@ -105,7 +106,7 @@ const HeroSection = () => {
               <Button 
                 variant="default" 
                 size="lg"
-                className="bg-foreground text-background hover:bg-foreground/90 font-medium w-full sm:w-auto"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 font-medium w-full sm:w-auto shadow-lg hover:shadow-[var(--shadow-glow)] transition-all"
                 onClick={scrollToAbout}
               >
                 Research Portfolio
@@ -116,7 +117,7 @@ const HeroSection = () => {
                 <Button 
                   variant="outline" 
                   size="icon" 
-                  className="border-muted hover:bg-muted/10"
+                  className="border-primary/30 bg-card/50 backdrop-blur-sm hover:bg-primary/10 hover:border-primary transition-all"
                   onClick={() => window.open('https://orcid.org/0009-0005-9467-5379', '_blank')}
                 >
                   <ExternalLink className="h-4 w-4" />
@@ -124,7 +125,7 @@ const HeroSection = () => {
                 <Button 
                   variant="outline" 
                   size="icon" 
-                  className="border-muted hover:bg-muted/10"
+                  className="border-primary/30 bg-card/50 backdrop-blur-sm hover:bg-primary/10 hover:border-primary transition-all"
                   onClick={() => window.open('mailto:hriday_patel@hotmail.com', '_blank')}
                 >
                   <Mail className="h-4 w-4" />
@@ -132,7 +133,7 @@ const HeroSection = () => {
                 <Button 
                   variant="outline" 
                   size="icon" 
-                  className="border-muted hover:bg-muted/10"
+                  className="border-primary/30 bg-card/50 backdrop-blur-sm hover:bg-primary/10 hover:border-primary transition-all"
                   onClick={() => window.open('https://www.linkedin.com/in/hriday-patel-64a04b316/', '_blank')}
                 >
                   <Linkedin className="h-4 w-4" />

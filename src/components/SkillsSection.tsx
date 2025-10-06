@@ -60,7 +60,7 @@ const SkillsSection = () => {
   };
 
   return (
-    <section id="skills" className="py-16 sm:py-20 px-4 sm:px-6">
+    <section id="skills" className="py-16 sm:py-20 px-4 sm:px-6 bg-gradient-to-b from-background via-secondary/20 to-background">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12 sm:mb-16">
           <div className="flex items-center justify-center gap-2 sm:gap-3 mb-4 sm:mb-6">
@@ -83,7 +83,7 @@ const SkillsSection = () => {
             return (
               <Card 
                 key={index}
-                className={`p-4 sm:p-6 bg-card/30 backdrop-blur-sm border ${colors.border} hover:shadow-lg transition-all duration-300`}
+                className={`p-4 sm:p-6 bg-card/50 backdrop-blur-md border ${colors.border} hover:shadow-lg hover:shadow-[var(--shadow-glow)] transition-all duration-300`}
               >
                 <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
                   <div className={`p-2 sm:p-3 rounded-lg ${colors.bg}`}>
@@ -105,7 +105,7 @@ const SkillsSection = () => {
         </div>
 
         {/* Professional Certifications */}
-        <Card className="p-4 sm:p-6 lg:p-8 bg-card/30 backdrop-blur-sm border-border/50">
+        <Card className="p-4 sm:p-6 lg:p-8 bg-card/60 backdrop-blur-md border-primary/30 hover:border-primary/40 transition-all shadow-lg">
           <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 mb-6 sm:mb-8">
             <Shield className="h-5 w-5 sm:h-6 sm:w-6 text-muted-foreground" />
             <h3 className="text-lg sm:text-xl font-medium text-center">
@@ -114,7 +114,7 @@ const SkillsSection = () => {
           </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
-            <div className="p-3 sm:p-4 rounded-lg bg-muted/10 border border-border/30 hover:border-muted/50 transition-colors">
+            <div className="p-3 sm:p-4 rounded-lg bg-card/40 backdrop-blur-sm border border-primary/20 hover:border-primary/40 hover:shadow-md transition-all">
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 gap-1 sm:gap-2">
                 <h4 className="font-medium text-xs sm:text-sm break-words">CS50: Introduction to Computer Science</h4>
                 <Badge variant="outline" className="text-xs font-mono w-fit">Foundational</Badge>
@@ -124,7 +124,7 @@ const SkillsSection = () => {
                 <span className="text-xs text-muted-foreground">2024</span>
               </div>
             </div>
-            <div className="p-3 sm:p-4 rounded-lg bg-muted/10 border border-border/30 hover:border-muted/50 transition-colors">
+            <div className="p-3 sm:p-4 rounded-lg bg-card/40 backdrop-blur-sm border border-primary/20 hover:border-primary/40 hover:shadow-md transition-all">
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 gap-1 sm:gap-2">
                 <h4 className="font-medium text-xs sm:text-sm break-words">Ethical Hacking & Penetration Testing</h4>
                 <Badge variant="outline" className="text-xs font-mono w-fit">Specialized</Badge>
@@ -134,7 +134,7 @@ const SkillsSection = () => {
                 <span className="text-xs text-muted-foreground">2024</span>
               </div>
             </div>
-            <div className="p-3 sm:p-4 rounded-lg bg-muted/10 border border-border/30 hover:border-muted/50 transition-colors">
+            <div className="p-3 sm:p-4 rounded-lg bg-card/40 backdrop-blur-sm border border-primary/20 hover:border-primary/40 hover:shadow-md transition-all">
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 gap-1 sm:gap-2">
                 <h4 className="font-medium text-xs sm:text-sm break-words">Quantum Computing & Quantum Internet</h4>
                 <Badge variant="outline" className="text-xs font-mono w-fit">Research</Badge>
@@ -144,7 +144,7 @@ const SkillsSection = () => {
                 <span className="text-xs text-muted-foreground">2024</span>
               </div>
             </div>
-            <div className="p-3 sm:p-4 rounded-lg bg-muted/10 border border-border/30 hover:border-muted/50 transition-colors">
+            <div className="p-3 sm:p-4 rounded-lg bg-card/40 backdrop-blur-sm border border-primary/20 hover:border-primary/40 hover:shadow-md transition-all">
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 gap-1 sm:gap-2">
                 <h4 className="font-medium text-xs sm:text-sm break-words">AP Calculus AB</h4>
                 <Badge variant="outline" className="text-xs font-mono w-fit">Academic</Badge>
@@ -155,7 +155,7 @@ const SkillsSection = () => {
                 <Badge variant="outline" className="text-xs font-mono">Score: 3</Badge>
               </div>
             </div>
-            <div className="p-3 sm:p-4 rounded-lg bg-muted/10 border border-border/30 hover:border-muted/50 transition-colors">
+            <div className="p-3 sm:p-4 rounded-lg bg-card/40 backdrop-blur-sm border border-primary/20 hover:border-primary/40 hover:shadow-md transition-all">
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 gap-1 sm:gap-2">
                 <h4 className="font-medium text-xs sm:text-sm break-words">Software Development Internship</h4>
                 <Badge variant="outline" className="text-xs font-mono w-fit">Professional</Badge>
@@ -165,7 +165,7 @@ const SkillsSection = () => {
                 <span className="text-xs text-muted-foreground">2024</span>
               </div>
             </div>
-            <div className="p-3 sm:p-4 rounded-lg bg-muted/10 border border-border/30 hover:border-muted/50 transition-colors">
+            <div className="p-3 sm:p-4 rounded-lg bg-card/40 backdrop-blur-sm border border-primary/20 hover:border-primary/40 hover:shadow-md transition-all">
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 gap-1 sm:gap-2">
                 <h4 className="font-medium text-xs sm:text-sm break-words">CTF Hacking Tournament - 7th Place</h4>
                 <Badge variant="outline" className="text-xs font-mono w-fit">Competition</Badge>
@@ -175,7 +175,7 @@ const SkillsSection = () => {
                 <span className="text-xs text-muted-foreground">220 teams</span>
               </div>
             </div>
-            <div className="p-3 sm:p-4 rounded-lg bg-muted/10 border border-border/30 hover:border-muted/50 transition-colors">
+            <div className="p-3 sm:p-4 rounded-lg bg-card/40 backdrop-blur-sm border border-primary/20 hover:border-primary/40 hover:shadow-md transition-all">
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 gap-1 sm:gap-2">
                 <h4 className="font-medium text-xs sm:text-sm break-words">C++ Hacking Competition - 3rd Place</h4>
                 <Badge variant="outline" className="text-xs font-mono w-fit">Competition</Badge>
