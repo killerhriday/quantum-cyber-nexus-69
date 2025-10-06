@@ -11,24 +11,23 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
-      {/* Sophisticated Background with Parallax */}
+      {/* Sophisticated Cream Background */}
       <motion.div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${sophisticatedHero})` }}
-        initial={{ scale: 1.1 }}
-        animate={{ scale: 1 }}
+        className="absolute inset-0"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
         transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/85 to-background" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,hsl(var(--primary)/0.15),transparent_50%)]" />
+        <div className="absolute inset-0 bg-gradient-to-br from-cream-light via-background to-cream-medium" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,hsl(var(--primary)/0.08),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,hsl(var(--accent)/0.06),transparent_50%)]" />
       </motion.div>
       
-      
-      {/* Sophisticated Grid Pattern */}
-      <div className="absolute inset-0 opacity-20">
+      {/* Elegant Grid Pattern */}
+      <div className="absolute inset-0 opacity-[0.03]">
         <div className="absolute inset-0" style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.1) 1px, transparent 0)`,
-          backgroundSize: '40px 40px'
+          backgroundImage: `radial-gradient(circle at 1px 1px, hsl(var(--foreground)) 1px, transparent 0)`,
+          backgroundSize: '48px 48px'
         }} />
       </div>
 
@@ -44,7 +43,7 @@ const HeroSection = () => {
             transition={{ duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="mb-4 sm:mb-6 lg:mb-0">
-              <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 mx-auto lg:mx-0 mb-3 sm:mb-4 lg:mb-6 rounded-full overflow-hidden border-2 border-muted/30">
+              <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 mx-auto lg:mx-0 mb-3 sm:mb-4 lg:mb-6 rounded-full overflow-hidden border-2 border-primary/20 shadow-lg">
                 <img 
                   src={profileNew} 
                   alt="Hriday H Patel" 
@@ -52,8 +51,8 @@ const HeroSection = () => {
                 />
               </div>
               <div className="flex items-center gap-2 justify-center lg:justify-start mb-3 sm:mb-4">
-                <Award className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5 text-muted-foreground" />
-                <span className="text-xs sm:text-sm font-mono text-muted-foreground tracking-wider">
+                <Award className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5 text-primary" />
+                <span className="text-xs sm:text-sm font-mono text-foreground tracking-wider font-medium">
                   RESEARCH FELLOW
                 </span>
               </div>
@@ -114,30 +113,30 @@ const HeroSection = () => {
               </Button>
               
               <div className="flex gap-3 justify-center">
-                <Button 
-                  variant="outline" 
-                  size="icon" 
-                  className="border-primary/30 bg-card/50 backdrop-blur-sm hover:bg-primary/10 hover:border-primary transition-all"
-                  onClick={() => window.open('https://orcid.org/0009-0005-9467-5379', '_blank')}
-                >
-                  <ExternalLink className="h-4 w-4" />
-                </Button>
-                <Button 
-                  variant="outline" 
-                  size="icon" 
-                  className="border-primary/30 bg-card/50 backdrop-blur-sm hover:bg-primary/10 hover:border-primary transition-all"
-                  onClick={() => window.open('mailto:hriday_patel@hotmail.com', '_blank')}
-                >
-                  <Mail className="h-4 w-4" />
-                </Button>
-                <Button 
-                  variant="outline" 
-                  size="icon" 
-                  className="border-primary/30 bg-card/50 backdrop-blur-sm hover:bg-primary/10 hover:border-primary transition-all"
-                  onClick={() => window.open('https://www.linkedin.com/in/hriday-patel-64a04b316/', '_blank')}
-                >
-                  <Linkedin className="h-4 w-4" />
-                </Button>
+              <Button 
+                variant="outline" 
+                size="icon" 
+                className="hover:bg-primary/10 hover:border-primary transition-all"
+                onClick={() => window.open('https://orcid.org/0009-0005-9467-5379', '_blank')}
+              >
+                <ExternalLink className="h-4 w-4" />
+              </Button>
+              <Button 
+                variant="outline" 
+                size="icon" 
+                className="hover:bg-primary/10 hover:border-primary transition-all"
+                onClick={() => window.open('mailto:hriday_patel@hotmail.com', '_blank')}
+              >
+                <Mail className="h-4 w-4" />
+              </Button>
+              <Button 
+                variant="outline" 
+                size="icon" 
+                className="hover:bg-primary/10 hover:border-primary transition-all"
+                onClick={() => window.open('https://www.linkedin.com/in/hriday-patel-64a04b316/', '_blank')}
+              >
+                <Linkedin className="h-4 w-4" />
+              </Button>
               </div>
             </motion.div>
           </motion.div>
